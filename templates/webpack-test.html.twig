@@ -18,5 +18,10 @@
 {% endblock %}
 
 {% block body %}
+    <div class="react-test">
+{#    Use example if stimulus is needed    #}
+{#        <div class="stimulus-charsheet" data-controller="hello"></div>#}
 
+        <div {{ react_component('App', { 'username': 'John Doe' }) }}></div>
+    </div>
 {% endblock %}

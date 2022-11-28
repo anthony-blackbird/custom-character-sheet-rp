@@ -10,3 +10,7 @@ import './styles/app.css';
 
 // start the Stimulus application
 import './bootstrap';
+//symfony/ux-react used to run react, see https://symfony.com/bundles/ux-react/current/index.html
+import { registerReactControllerComponents } from '@symfony/ux-react';
+
+registerReactControllerComponents(require.context('./react/controllers', true, /\.(j|t)sx?$/));
