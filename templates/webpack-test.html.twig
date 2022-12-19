@@ -22,6 +22,12 @@
 {#    Use example if stimulus is needed    #}
 {#        <div class="stimulus-charsheet" data-controller="hello"></div>#}
 
-        <div {{ react_component('App', { 'username': 'John Doe' }) }}></div>
+        <div {{ react_component(
+            'App', {
+                'username': 'John Doe',
+                'value': 8,
+                'hasMastery': 1
+            }
+        ) }}></div>
     </div>
 {% endblock %}
