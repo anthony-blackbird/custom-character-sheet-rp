@@ -1,6 +1,5 @@
 import React from 'react'
 
-//TODO: update hasMastery with checkbox
 //TODO: create AbstractModule, InfoModule and AbilityModule components
 //TODO: (planned) do skill, drvd and health module
 
@@ -9,22 +8,32 @@ class CharSheet extends React.Component {
         super(props);
         this.state = {
             //info
-            username: props.username,
+            username: props.charsheet.username,
             //drvd
             masteryScore: 3,
             //ability
             name: 'Force',
-            value: props.value,
-            hasMastery: props.hasMastery,
-            modValue: 0,
-            saveValue: 0,
+            value: props.charsheet.value,
+            hasMastery: props.charsheet.hasMastery,
+            modValue: null,
+            saveValue: null,
         }
-        this.updateAbilityScore(this.state.value);
+        this.updateState(this.state);
     }
 
     updateAbilityScore(value) {
         let newState = this.state;
         newState.value = value;
+        this.updateState(newState)
+    }
+
+    updateMastery(value) {
+        let newState = this.state;
+        newState.hasMastery = value;
+        this.updateState(newState)
+    }
+
+    updateState(newState) {
         newState.modValue = Math.floor((this.state.value - 10) / 2);
         newState.saveValue = this.state.modValue + this.state.masteryScore * this.state.hasMastery;
         this.setState(newState);
@@ -53,7 +62,8 @@ class CharSheet extends React.Component {
                             name='strength-mastery-check'
                             type='checkbox'
                             className='ability-block__mastery-check'
-                            defaultValue={this.state.hasMastery}
+                            defaultChecked={this.state.hasMastery}
+                            onChange={(e) => this.updateMastery(e.target.checked)}
                         />
                         <span className='ability-block__mod-value'>{this.state.modValue}</span>
                         <span className='ability-block__save-value'>{this.state.saveValue}</span>
