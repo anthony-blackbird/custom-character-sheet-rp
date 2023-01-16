@@ -24,9 +24,21 @@
 
         <div {{ react_component(
             'App', {
-                'username': 'John Doe',
-                'value': 8,
-                'hasMastery': 1
+                charSheet: {
+                    infos: {
+                        username: 'John Doe',
+                    },
+                    masteryScore: 3,
+                    strength: {
+                        code: 'strength',
+                        name: 'Force',
+                        value: 8,
+                        hasMastery: true,
+                        modValue: null,
+                        saveValue: null,
+                    },
+                    hasMastery: true
+                }
             }
         ) }}></div>
     </div>
