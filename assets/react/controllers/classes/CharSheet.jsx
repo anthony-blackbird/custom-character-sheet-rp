@@ -2,29 +2,23 @@ import React from 'react'
 import AbilityModule from './AbilityModule'
 import InfoModule from './InfoModule'
 
-//TODO: create InfoBlock and AbilityBlock components with multiple instance inside of it inside their respective modules
+//TODO: create InfoBlock component
 //TODO: (planned) do skill, drvd and health module
 
 class CharSheet extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            //info
             infos: props.charsheet.infos,
             //drvd
             masteryScore: props.charsheet.masteryScore,
-            //ability
-            strength: props.charsheet.strength
+            abilities: props.charsheet.abilities
         }
-        this.updateAbility(this.state.strength);
     }
 
-    updateAbility(ability) {
-        ability.modValue = Math.floor((ability.value - 10) / 2);
-        ability.saveValue = ability.modValue + this.state.masteryScore * ability.hasMastery;
-
+    updateAbilities(abilities) {
         let newState = this.state;
-        newState[ability.code] = ability;
+        newState.abilities = abilities;
 
         this.updateState(newState);
     }
@@ -40,8 +34,9 @@ class CharSheet extends React.Component {
                     infos={this.state.infos}
                 />
                 <AbilityModule
-                    ability={this.state.strength}
-                    updateAbility={(ability) => this.updateAbility(ability)}
+                    abilities={this.state.abilities}
+                    masteryScore={this.state.masteryScore}
+                    updateAbilities={(abilities) => this.updateAbilities(abilities)}
                 />
                 //TODO: other modules
                 {/*<div className='skill-module'>*/}

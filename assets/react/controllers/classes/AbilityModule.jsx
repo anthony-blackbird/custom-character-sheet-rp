@@ -1,41 +1,54 @@
 import React from 'react'
+import AbilityBlock from './AbilityBlock'
 
 class AbilityModule extends React.Component {
-    updateAbilityScore(value) {
-        let newState = this.props.ability;
-        newState.value = value;
-        this.props.updateAbility(newState)
+    constructor(props) {
+        super(props);
+        self = this;
+        Object.values(props.abilities).forEach(function(ability) {
+            self.updateAbility(props.abilities[ability.code]);
+        });
     }
 
-    updateMastery(value) {
-        let newState = this.props.ability;
-        newState.hasMastery = value;
-        this.props.updateAbility(newState)
+    updateAbility(ability) {
+        ability.modValue = Math.floor((ability.value - 10) / 2);
+        ability.saveValue = ability.modValue + this.props.masteryScore * ability.hasMastery;
+
+        let newAbilitiesState = this.props.abilities;
+        newAbilitiesState[ability.code] = ability;
+
+        this.props.updateAbilities(newAbilitiesState);
     }
+
+    //TODO : loop on props.abilities to render an AbiltyBlock for every ability instead of manually declaring them in render
 
     render() {
         return (
             <div className='ability-module'>
-                <div className='ability-block --strength'>
-                    <span className='ability-block__name'>{this.props.ability.name}</span>
-                    <input
-                        name='strength-input'
-                        type='text'
-                        className='ability-block__input'
-                        placeholder='Valeur'
-                        defaultValue={this.props.ability.value}
-                        onChange={(e) => this.updateAbilityScore(e.target.value)}
-                    />
-                    <input
-                        name='strength-mastery-check'
-                        type='checkbox'
-                        className='ability-block__mastery-check'
-                        defaultChecked={this.props.ability.hasMastery}
-                        onChange={(e) => this.updateMastery(e.target.checked)}
-                    />
-                    <span className='ability-block__mod-value'>{this.props.ability.modValue}</span>
-                    <span className='ability-block__save-value'>{this.props.ability.saveValue}</span>
-                </div>
+                <AbilityBlock
+                    ability={this.props.abilities.strength}
+                    updateAbility={(ability) => this.updateAbility(ability)}
+                />
+                <AbilityBlock
+                    ability={this.props.abilities.dexterity}
+                    updateAbility={(ability) => this.updateAbility(ability)}
+                />
+                <AbilityBlock
+                    ability={this.props.abilities.constitution}
+                    updateAbility={(ability) => this.updateAbility(ability)}
+                />
+                <AbilityBlock
+                    ability={this.props.abilities.intelligence}
+                    updateAbility={(ability) => this.updateAbility(ability)}
+                />
+                <AbilityBlock
+                    ability={this.props.abilities.wisdom}
+                    updateAbility={(ability) => this.updateAbility(ability)}
+                />
+                <AbilityBlock
+                    ability={this.props.abilities.charisma}
+                    updateAbility={(ability) => this.updateAbility(ability)}
+                />
             </div>
         );
     }
