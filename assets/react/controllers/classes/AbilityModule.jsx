@@ -20,35 +20,17 @@ class AbilityModule extends React.Component {
         this.props.updateAbilities(newAbilitiesState);
     }
 
-    //TODO : loop on props.abilities to render an AbiltyBlock for every ability instead of manually declaring them in render
-
     render() {
         return (
             <div className='ability-module'>
-                <AbilityBlock
-                    ability={this.props.abilities.strength}
-                    updateAbility={(ability) => this.updateAbility(ability)}
-                />
-                <AbilityBlock
-                    ability={this.props.abilities.dexterity}
-                    updateAbility={(ability) => this.updateAbility(ability)}
-                />
-                <AbilityBlock
-                    ability={this.props.abilities.constitution}
-                    updateAbility={(ability) => this.updateAbility(ability)}
-                />
-                <AbilityBlock
-                    ability={this.props.abilities.intelligence}
-                    updateAbility={(ability) => this.updateAbility(ability)}
-                />
-                <AbilityBlock
-                    ability={this.props.abilities.wisdom}
-                    updateAbility={(ability) => this.updateAbility(ability)}
-                />
-                <AbilityBlock
-                    ability={this.props.abilities.charisma}
-                    updateAbility={(ability) => this.updateAbility(ability)}
-                />
+                {
+                    Object.values(this.props.abilities).map((ability) => {
+                        return (<AbilityBlock
+                            ability={ability}
+                            updateAbility={(abilityState) => this.updateAbility(abilityState)}
+                        />)
+                    })
+                }
             </div>
         );
     }
