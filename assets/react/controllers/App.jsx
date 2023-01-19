@@ -4,7 +4,7 @@ import CharSheet from "./classes/CharSheet";
 export default function (props) {
     return (
         <CharSheet
-            charsheet={props.charSheet}
+            charsheet={JSON.parse(props.charSheet)}
         />
     );
 }
