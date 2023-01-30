@@ -11,11 +11,11 @@ class AbilityModule extends React.Component {
     }
 
     updateAbility(abilityState) {
-        abilityState.modValue = Math.floor((ability.value - 10) / 2);
+        abilityState.modValue = Math.floor((abilityState.value - 10) / 2);
         abilityState.saveValue = abilityState.modValue + this.props.masteryScore * abilityState.hasMastery;
 
         let newAbilitiesState = this.props.abilities;
-        newAbilitiesState[ability.code] = abilityState;
+        newAbilitiesState[abilityState.code] = abilityState;
 
         this.props.updateAbilities(newAbilitiesState);
     }

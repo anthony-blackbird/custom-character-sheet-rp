@@ -15,10 +15,10 @@ class AbilityBlock extends React.Component {
 
     render() {
         return (
-            <div className='ability-block --strength'>
+            <div className={'ability-block --' + this.props.ability.code}>
                 <span className='ability-block__name'>{this.props.ability.name}</span>
                 <input
-                    name='strength-input'
+                    name={this.props.ability.code + '-input'}
                     type='text'
                     className='ability-block__input'
                     placeholder='Valeur'
@@ -26,7 +26,7 @@ class AbilityBlock extends React.Component {
                     onChange={(e) => this.updateAbilityScore(e.target.value)}
                 />
                 <input
-                    name='strength-mastery-check'
+                    name={this.props.ability.code + '-mastery-check'}
                     type='checkbox'
                     className='ability-block__mastery-check'
                     defaultChecked={this.props.ability.hasMastery}

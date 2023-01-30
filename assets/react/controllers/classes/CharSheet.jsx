@@ -2,7 +2,6 @@ import React from 'react'
 import AbilityModule from './AbilityModule'
 import InfoModule from './InfoModule'
 
-//TODO: create InfoBlock component
 //TODO: (planned) do skill, drvd and health module
 
 class CharSheet extends React.Component {
@@ -14,6 +13,13 @@ class CharSheet extends React.Component {
             masteryScore: props.charsheet.masteryScore,
             abilities: props.charsheet.abilities
         }
+    }
+
+    updateInfos(infos) {
+        let newState = this.state;
+        newState.infos = infos;
+
+        this.updateState(newState);
     }
 
     updateAbilities(abilities) {
@@ -32,6 +38,7 @@ class CharSheet extends React.Component {
             <div className='char-sheet'>
                 <InfoModule
                     infos={this.state.infos}
+                    updateInfos={(infos) => this.updateInfos(infos)}
                 />
                 <AbilityModule
                     abilities={this.state.abilities}

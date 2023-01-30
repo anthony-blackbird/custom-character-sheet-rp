@@ -15,7 +15,16 @@ class DefaultController extends AbstractController
     {
         $charSheet = [
             'infos' => [
-                'username' => 'John Doe'
+                'name' => [
+                    'code' => 'name',
+                    'name' => 'Name',
+                    'value' => 'John Doe',
+                ],
+                'faith' => [
+                    'code' => 'faith',
+                    'name' => 'Faith',
+                    'value' => 'Brigitte du Nord',
+                ],
             ],
             'masteryScore' => 3,
             'abilities' => [
