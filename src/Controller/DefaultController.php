@@ -35,13 +35,13 @@ class DefaultController extends AbstractController
             'abilities' => [
                 'strength' => [
                     'code' => 'strength',
-                    'name' => 'Force',
+                    'name' => 'Strength',
                     'value' => 8,
                     'hasMastery' => false,
                 ],
                 'dexterity' => [
                     'code' => 'dexterity',
-                    'name' => 'Dexterité',
+                    'name' => 'Dexterity',
                     'value' => 10,
                     'hasMastery' => false,
                 ],
@@ -59,13 +59,13 @@ class DefaultController extends AbstractController
                 ],
                 'wisdom' => [
                     'code' => 'wisdom',
-                    'name' => 'Sagesse',
+                    'name' => 'Wisdom',
                     'value' => 16,
                     'hasMastery' => true,
                 ],
                 'charisma' => [
                     'code' => 'charisma',
-                    'name' => 'Charisme',
+                    'name' => 'Charisma',
                     'value' => 16,
                     'hasMastery' => true,
                 ],

@@ -2,7 +2,6 @@ import React from 'react'
 import AbilityModule from './AbilityModule'
 import InfoModule from './InfoModule'
 
-//TODO: Apply 'additionnal' from InfoModule/Block mechanic to AbilityModule/Block
 //TODO: Factorize in a general Module and Block
 //TODO: (planned) do drvd, skill and health module
 //TODO: Find a way to specify an object of value dependencies from a module to another
