@@ -1,6 +1,10 @@
 import React from 'react'
 
 class InfoBlock extends React.Component {
+    constructor(props) {
+        super(props);
+        console.log(props);
+    }
     updateInfoValue(value) {
         let newState = this.props.info;
         newState.value = value;
@@ -18,6 +22,13 @@ class InfoBlock extends React.Component {
                     defaultValue={this.props.info.value}
                     onChange={(e) => this.updateInfoValue(e.target.value)}
                 />
+                {
+                    Object.values(this.props.info.additionnal).map((additionnal) => {
+                        return (<span className={'experience-block__' + additionnal.code + '__value'}>
+                            {additionnal.name} : {additionnal.value}
+                        </span>)
+                    })
+                }
             </div>
         );
     }

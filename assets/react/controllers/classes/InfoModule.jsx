@@ -2,6 +2,12 @@ import React from 'react'
 import InfoBlock from "./InfoBlock";
 
 class InfoModule extends React.Component {
+
+    experienceForLv = [
+        0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000,
+        85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000
+    ];
+
     constructor(props) {
         super(props);
         self = this;
@@ -10,7 +16,30 @@ class InfoModule extends React.Component {
         });
     }
 
+    experienceUpdate(infoState) {
+        let levelValue = 1;
+
+        while (levelValue < this.experienceForLv.length) {
+            if (infoState.value < this.experienceForLv[levelValue]) {
+                break;
+            }
+            levelValue++;
+        }
+
+        infoState.additionnal['level'] = {
+            'code' : 'level',
+            'name' : 'Level',
+            'value' : levelValue,
+        };
+    }
+
     updateInfo(infoState) {
+        infoState.additionnal = {};
+
+        if(infoState.code === 'experience') {
+            this.experienceUpdate(infoState);
+        }
+
         let newInfosState = this.props.infos;
         newInfosState[infoState.code] = infoState;
 

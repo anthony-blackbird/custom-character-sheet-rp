@@ -20,6 +20,11 @@ class DefaultController extends AbstractController
                     'name' => 'Name',
                     'value' => 'John Doe',
                 ],
+                'experience' => [
+                    'code' => 'experience',
+                    'name' => 'Experience',
+                    'value' => 40000,
+                ],
                 'faith' => [
                     'code' => 'faith',
                     'name' => 'Faith',
