@@ -32,8 +32,13 @@ class AbilityBlock extends React.Component {
                     defaultChecked={this.props.ability.hasMastery}
                     onChange={(e) => this.updateMastery(e.target.checked)}
                 />
-                <span className='ability-block__mod-value'>{this.props.ability.modValue}</span>
-                <span className='ability-block__save-value'>{this.props.ability.saveValue}</span>
+                {
+                    Object.values(this.props.ability.additionnal).map((additionnal) => {
+                        return (<span className={'abilty-block__' + additionnal.code + '__value'}>
+                            {additionnal.name} : {additionnal.value}
+                        </span>)
+                    })
+                }
             </div>
         );
     }

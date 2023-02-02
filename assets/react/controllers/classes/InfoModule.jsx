@@ -26,6 +26,8 @@ class InfoModule extends React.Component {
             levelValue++;
         }
 
+        infoState.level = levelValue; //setting value to state to be exported to define other values
+
         infoState.additionnal['level'] = {
             'code' : 'level',
             'name' : 'Level',
