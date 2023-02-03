@@ -1,15 +1,37 @@
 import React from 'react'
+import TextInput from './Inputs/TextInput'
+import CheckboxInput from './Inputs/CheckboxInput'
 
 class AbilityBlock extends React.Component {
-    updateAbilityScore(value) {
-        let newState = this.props.ability;
-        newState.value = value;
-        this.props.updateAbility(newState)
+    constructor(props) {
+        super(props);
+        self = this;
+        self.updateValue('value', this.props.ability.value);
+        self.updateValue('hasMastery', this.props.ability.hasMastery);
     }
 
-    updateMastery(value) {
+    updateValue(code, value) {
+        let inputs = {};
+
+        inputs['value'] = {
+            name: this.props.ability.code + '-value',
+            type: 'text',
+            code: 'value',
+            cssClass: 'ability-block__value',
+            defaultValue: this.props.ability.value
+        };
+        inputs['hasMastery'] = {
+            name: this.props.ability.code + '-hasMastery',
+            type: 'checkBox',
+            code: 'hasMastery',
+            cssClass: 'ability-block__hasMastery',
+            defaultValue: this.props.ability.hasMastery
+        };
+
         let newState = this.props.ability;
-        newState.hasMastery = value;
+        newState[code] = value;
+        newState.inputs = inputs;
+
         this.props.updateAbility(newState)
     }
 
@@ -17,20 +39,13 @@ class AbilityBlock extends React.Component {
         return (
             <div className={'ability-block --' + this.props.ability.code}>
                 <span className='ability-block__name'>{this.props.ability.name}</span>
-                <input
-                    name={this.props.ability.code + '-input'}
-                    type='text'
-                    className='ability-block__input'
-                    placeholder='Valeur'
-                    defaultValue={this.props.ability.value}
-                    onChange={(e) => this.updateAbilityScore(e.target.value)}
+                <TextInput
+                    input={this.props.ability.inputs['value']}
+                    updateValue={(code, value) => this.updateValue(code, value)}
                 />
-                <input
-                    name={this.props.ability.code + '-mastery-check'}
-                    type='checkbox'
-                    className='ability-block__mastery-check'
-                    defaultChecked={this.props.ability.hasMastery}
-                    onChange={(e) => this.updateMastery(e.target.checked)}
+                <CheckboxInput
+                    input={this.props.ability.inputs['hasMastery']}
+                    updateValue={(code, value) => this.updateValue(code, value)}
                 />
                 {
                     Object.values(this.props.ability.additionnal).map((additionnal) => {

@@ -1,13 +1,27 @@
 import React from 'react'
+import TextInput from './Inputs/TextInput'
 
 class InfoBlock extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props);
+        self = this;
+        self.updateValue('value', this.props.info.value);
     }
-    updateInfoValue(value) {
+    updateValue(code, value) {
+        let inputs = {};
+
+        inputs['value'] = {
+            name: this.props.info.code + '-value',
+            type: 'text',
+            code: 'value',
+            cssClass: 'info-block__value',
+            defaultValue: this.props.info.value
+        };
+
         let newState = this.props.info;
-        newState.value = value;
+        newState[code] = value;
+        newState.inputs = inputs;
+
         this.props.updateInfo(newState)
     }
 
@@ -15,12 +29,9 @@ class InfoBlock extends React.Component {
         return (
             <div className={'info-block --' + this.props.info.code}>
                 <span className='info-block__name'>{this.props.info.name}</span>
-                <input
-                    name={this.props.info.code + '-input'}
-                    type='text'
-                    className='info-block__input'
-                    defaultValue={this.props.info.value}
-                    onChange={(e) => this.updateInfoValue(e.target.value)}
+                <TextInput
+                    input={this.props.info.inputs['value']}
+                    updateValue={(code, value) => this.updateValue(code, value)}
                 />
                 {
                     Object.values(this.props.info.additionnal).map((additionnal) => {
