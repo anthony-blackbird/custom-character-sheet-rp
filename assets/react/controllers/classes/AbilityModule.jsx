@@ -13,20 +13,21 @@ class AbilityModule extends React.Component {
     updateAbility(abilityState) {
         abilityState.additionnal = {};
 
-        let modValue = Math.floor((abilityState.value - 10) / 2);
-        abilityState.modValue = modValue; //setting value to state to be exported to define other values
+        let modValue = Math.floor((abilityState.data.value - 10) / 2);
+        abilityState.data.mod = modValue; //setting value to state to be exported to define other values
 
-        let saveValue = abilityState.modValue + this.props.masteryScore * abilityState.hasMastery;
+        let saveValue = abilityState.data.mod + this.props.masteryScore * abilityState.hasMastery;
+        abilityState.data.save = saveValue; //setting value to state to be exported to define other values
 
         abilityState.additionnal['mod'] = {
             'code' : 'mod',
             'name' : 'Modifier',
-            'value' : modValue,
+            'value' : abilityState.data.mod,
         };
         abilityState.additionnal['save'] = {
             'code' : 'save',
             'name' : 'Save value',
-            'value' : saveValue,
+            'value' : abilityState.data.save,
         };
 
         let newAbilitiesState = this.props.abilities;

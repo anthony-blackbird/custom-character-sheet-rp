@@ -20,18 +20,18 @@ class InfoModule extends React.Component {
         let levelValue = 1;
 
         while (levelValue < this.experienceForLv.length) {
-            if (infoState.value < this.experienceForLv[levelValue]) {
+            if (infoState.data.value < this.experienceForLv[levelValue]) {
                 break;
             }
             levelValue++;
         }
 
-        infoState.level = levelValue; //setting value to state to be exported to define other values
+        infoState.data.level = levelValue; //setting value to state to be exported to define other values
 
         infoState.additionnal['level'] = {
             'code' : 'level',
             'name' : 'Level',
-            'value' : levelValue,
+            'value' : infoState.data.level,
         };
     }
 

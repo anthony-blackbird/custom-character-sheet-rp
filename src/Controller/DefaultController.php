@@ -18,17 +18,23 @@ class DefaultController extends AbstractController
                 'name' => [
                     'code' => 'name',
                     'name' => 'Name',
-                    'value' => 'John Doe',
+                    'data' => [
+                        'value' => 'John Doe',
+                    ],
                 ],
                 'experience' => [
                     'code' => 'experience',
                     'name' => 'Experience',
-                    'value' => 40000,
+                    'data' => [
+                        'value' => 40000,
+                    ],
                 ],
                 'faith' => [
                     'code' => 'faith',
                     'name' => 'Faith',
-                    'value' => 'Brigitte du Nord',
+                    'data' => [
+                        'value' => 'Brigitte du Nord',
+                    ],
                 ],
             ],
             'masteryScore' => 3,
@@ -36,38 +42,50 @@ class DefaultController extends AbstractController
                 'strength' => [
                     'code' => 'strength',
                     'name' => 'Strength',
-                    'value' => 8,
-                    'hasMastery' => false,
+                    'data' => [
+                        'value' => 8,
+                        'hasMastery' => false,
+                    ],
                 ],
                 'dexterity' => [
                     'code' => 'dexterity',
                     'name' => 'Dexterity',
-                    'value' => 10,
-                    'hasMastery' => false,
+                    'data' => [
+                        'value' => 10,
+                        'hasMastery' => false,
+                    ],
                 ],
                 'constitution' => [
                     'code' => 'constitution',
                     'name' => 'Constitution',
-                    'value' => 14,
-                    'hasMastery' => false,
+                    'data' => [
+                        'value' => 14,
+                        'hasMastery' => false,
+                    ],
                 ],
                 'intelligence' => [
                     'code' => 'intelligence',
                     'name' => 'Intelligence',
-                    'value' => 12,
-                    'hasMastery' => false,
+                    'data' => [
+                        'value' => 12,
+                        'hasMastery' => false,
+                    ],
                 ],
                 'wisdom' => [
                     'code' => 'wisdom',
                     'name' => 'Wisdom',
-                    'value' => 16,
-                    'hasMastery' => true,
+                    'data' => [
+                        'value' => 16,
+                        'hasMastery' => true,
+                    ],
                 ],
                 'charisma' => [
                     'code' => 'charisma',
                     'name' => 'Charisma',
-                    'value' => 16,
-                    'hasMastery' => true,
+                    'data' => [
+                        'value' => 16,
+                        'hasMastery' => true,
+                    ],
                 ],
             ]
         ];

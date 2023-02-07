@@ -6,8 +6,9 @@ class AbilityBlock extends React.Component {
     constructor(props) {
         super(props);
         self = this;
-        self.updateValue('value', this.props.ability.value);
-        self.updateValue('hasMastery', this.props.ability.hasMastery);
+        for (const [key, data] of Object.entries(this.props.ability.data)) {
+            self.updateValue(key, data);
+        }
     }
 
     updateValue(code, value) {
@@ -18,14 +19,14 @@ class AbilityBlock extends React.Component {
             type: 'text',
             code: 'value',
             cssClass: 'ability-block__value',
-            defaultValue: this.props.ability.value
+            defaultValue: this.props.ability.data.value
         };
         inputs['hasMastery'] = {
             name: this.props.ability.code + '-hasMastery',
             type: 'checkBox',
             code: 'hasMastery',
             cssClass: 'ability-block__hasMastery',
-            defaultValue: this.props.ability.hasMastery
+            defaultValue: this.props.ability.data.hasMastery
         };
 
         let newState = this.props.ability;

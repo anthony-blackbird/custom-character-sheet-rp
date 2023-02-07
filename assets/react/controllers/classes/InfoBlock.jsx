@@ -5,7 +5,9 @@ class InfoBlock extends React.Component {
     constructor(props) {
         super(props);
         self = this;
-        self.updateValue('value', this.props.info.value);
+        for (const [key, data] of Object.entries(this.props.info.data)) {
+            self.updateValue(key, data);
+        }
     }
     updateValue(code, value) {
         let inputs = {};
@@ -15,7 +17,7 @@ class InfoBlock extends React.Component {
             type: 'text',
             code: 'value',
             cssClass: 'info-block__value',
-            defaultValue: this.props.info.value
+            defaultValue: this.props.info.data.value
         };
 
         let newState = this.props.info;

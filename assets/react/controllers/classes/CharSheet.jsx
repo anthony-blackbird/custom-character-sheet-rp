@@ -3,8 +3,6 @@ import AbilityModule from './AbilityModule'
 import InfoModule from './InfoModule'
 
 //TODO: Factorize in a general Module and Block
-//TODO: Put 'value' and other datas inside a 'data' object at root in block object
-//SubTODO: use 'data' object to programatically generate a block input
 //TODO: (planned) do drvd, skill and health module
 //TODO: Find a way to specify an object of value dependencies from a module to another
 
