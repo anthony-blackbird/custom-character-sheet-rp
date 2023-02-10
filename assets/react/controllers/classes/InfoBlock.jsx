@@ -1,43 +1,19 @@
 import React from 'react'
+import GenericBlock from './GenericBlock'
 import TextInput from './Inputs/TextInput'
 
-class InfoBlock extends React.Component {
-    constructor(props) {
-        super(props);
-        self = this;
-        for (const [key, data] of Object.entries(this.props.info.data)) {
-            self.updateValue(key, data);
-        }
-    }
-    updateValue(code, value) {
-        let inputs = {};
-
-        inputs['value'] = {
-            name: this.props.info.code + '-value',
-            type: 'text',
-            code: 'value',
-            cssClass: 'info-block__value',
-            defaultValue: this.props.info.data.value
-        };
-
-        let newState = this.props.info;
-        newState.data[code] = value;
-        newState.inputs = inputs;
-
-        this.props.updateInfo(newState)
-    }
-
+class InfoBlock extends GenericBlock {
     render() {
         return (
-            <div className={'info-block --' + this.props.info.code}>
-                <span className='info-block__name'>{this.props.info.name}</span>
+            <div className={this.props.blockData.blockCode + '-block --' + this.props.blockData.code}>
+                <span className={this.props.blockData.blockCode + '-block__name'}>{this.props.blockData.name}</span>
                 <TextInput
-                    input={this.props.info.inputs['value']}
+                    input={this.props.blockData.inputs['value']}
                     updateValue={(code, value) => this.updateValue(code, value)}
                 />
                 {
-                    Object.values(this.props.info.additionnal).map((additionnal) => {
-                        return (<span className={'experience-block__' + additionnal.code + '__value'}>
+                    Object.values(this.props.blockData.additionnal).map((additionnal) => {
+                        return (<span className={this.props.blockData.blockCode + '-block__' + additionnal.code + '__value'}>
                             {additionnal.name} : {additionnal.value}
                         </span>)
                     })

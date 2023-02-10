@@ -16,75 +16,129 @@ class DefaultController extends AbstractController
         $charSheet = [
             'infos' => [
                 'name' => [
+                    'blockCode' => 'info',
                     'code' => 'name',
                     'name' => 'Name',
-                    'data' => [
-                        'value' => 'John Doe',
+                    'inputs' => [
+                        'value' => [
+                            'type' => 'text',
+                            'defaultValue' => 'John Doe',
+                        ],
                     ],
                 ],
                 'experience' => [
+                    'blockCode' => 'info',
                     'code' => 'experience',
                     'name' => 'Experience',
-                    'data' => [
-                        'value' => 40000,
+                    'inputs' => [
+                        'value' => [
+                            'type' => 'text',
+                            'defaultValue' => 40000,
+                        ],
                     ],
                 ],
                 'faith' => [
+                    'blockCode' => 'info',
                     'code' => 'faith',
                     'name' => 'Faith',
-                    'data' => [
-                        'value' => 'Brigitte du Nord',
+                    'inputs' => [
+                        'value' => [
+                            'type' => 'text',
+                            'defaultValue' => 'Brigitte du Nord',
+                        ]
                     ],
                 ],
             ],
             'masteryScore' => 3,
             'abilities' => [
                 'strength' => [
+                    'blockCode' => 'ability',
                     'code' => 'strength',
                     'name' => 'Strength',
-                    'data' => [
-                        'value' => 8,
-                        'hasMastery' => false,
+                    'inputs' => [
+                        'value' => [
+                            'type' => 'text',
+                            'defaultValue' => 8,
+                        ],
+                        'hasMastery' => [
+                            'type' => 'checkbox',
+                            'defaultValue' => false,
+                        ],
                     ],
                 ],
                 'dexterity' => [
+                    'blockCode' => 'ability',
                     'code' => 'dexterity',
                     'name' => 'Dexterity',
-                    'data' => [
-                        'value' => 10,
-                        'hasMastery' => false,
+                    'inputs' => [
+                        'value' => [
+                            'type' => 'text',
+                            'defaultValue' => 10,
+                        ],
+                        'hasMastery' => [
+                            'type' => 'checkbox',
+                            'defaultValue' => false,
+                        ],
                     ],
                 ],
                 'constitution' => [
+                    'blockCode' => 'ability',
                     'code' => 'constitution',
                     'name' => 'Constitution',
-                    'data' => [
-                        'value' => 14,
-                        'hasMastery' => false,
+                    'inputs' => [
+                        'value' => [
+                            'type' => 'text',
+                            'defaultValue' => 14,
+                        ],
+                        'hasMastery' => [
+                            'type' => 'checkbox',
+                            'defaultValue' => false,
+                        ],
                     ],
                 ],
                 'intelligence' => [
+                    'blockCode' => 'ability',
                     'code' => 'intelligence',
                     'name' => 'Intelligence',
-                    'data' => [
-                        'value' => 12,
-                        'hasMastery' => false,
+                    'inputs' => [
+                        'value' => [
+                            'type' => 'text',
+                            'defaultValue' => 12,
+                        ],
+                        'hasMastery' => [
+                            'type' => 'checkbox',
+                            'defaultValue' => false,
+                        ],
                     ],
                 ],
                 'wisdom' => [
+                    'blockCode' => 'ability',
                     'code' => 'wisdom',
                     'name' => 'Wisdom',
-                    'data' => [
-                        'value' => 16,
-                        'hasMastery' => true,
+                    'inputs' => [
+                        'value' => [
+                            'type' => 'text',
+                            'defaultValue' => 16,
+                        ],
+                        'hasMastery' => [
+                            'type' => 'checkbox',
+                            'defaultValue' => true,
+                        ],
                     ],
                 ],
                 'charisma' => [
+                    'blockCode' => 'ability',
                     'code' => 'charisma',
                     'name' => 'Charisma',
-                    'data' => [
-                        'value' => 16,
-                        'hasMastery' => true,
+                    'inputs' => [
+                        'value' => [
+                            'type' => 'text',
+                            'defaultValue' => 16,
+                        ],
+                        'hasMastery' => [
+                            'type' => 'checkbox',
+                            'defaultValue' => true,
+                        ],
                     ],
                 ],
             ]

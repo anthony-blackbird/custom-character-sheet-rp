@@ -1,20 +1,13 @@
 import React from 'react'
+import GenericModule from "./GenericModule";
 import InfoBlock from "./InfoBlock";
 
-class InfoModule extends React.Component {
+class InfoModule extends GenericModule {
 
     experienceForLv = [
         0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000,
         85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000
     ];
-
-    constructor(props) {
-        super(props);
-        self = this;
-        Object.values(props.infos).forEach(function(info) {
-            self.updateInfo(props.infos[info.code]);
-        });
-    }
 
     experienceUpdate(infoState) {
         let levelValue = 1;
@@ -26,7 +19,7 @@ class InfoModule extends React.Component {
             levelValue++;
         }
 
-        infoState.data.level = levelValue; //setting value to state to be exported to define other values
+        infoState.data.level = levelValue;
 
         infoState.additionnal['level'] = {
             'code' : 'level',
@@ -35,27 +28,20 @@ class InfoModule extends React.Component {
         };
     }
 
-    updateInfo(infoState) {
-        infoState.additionnal = {};
-
+    updateAdditionnals(infoState) {
         if(infoState.code === 'experience') {
             this.experienceUpdate(infoState);
         }
-
-        let newInfosState = this.props.infos;
-        newInfosState[infoState.code] = infoState;
-
-        this.props.updateInfos(newInfosState);
     }
 
     render() {
         return (
             <div className='info-module'>
                 {
-                    Object.values(this.props.infos).map((info) => {
+                    Object.values(this.props.moduleData).map((info) => {
                         return (<InfoBlock
-                            info={info}
-                            updateInfo={(infoState) => this.updateInfo(infoState)}
+                            blockData={info}
+                            updateBlock={(infoState) => this.updateBlock(infoState)}
                         />)
                     })
                 }

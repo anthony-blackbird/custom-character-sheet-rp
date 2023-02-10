@@ -2,7 +2,6 @@ import React from 'react'
 import AbilityModule from './AbilityModule'
 import InfoModule from './InfoModule'
 
-//TODO: Factorize in a general Module and Block
 //TODO: (planned) do drvd, skill and health module
 //TODO: Find a way to specify an object of value dependencies from a module to another
 
@@ -39,13 +38,13 @@ class CharSheet extends React.Component {
         return (
             <div className='char-sheet'>
                 <InfoModule
-                    infos={this.state.infos}
-                    updateInfos={(infos) => this.updateInfos(infos)}
+                    moduleData={this.state.infos}
+                    updateModule={(infos) => this.updateInfos(infos)}
                 />
                 <AbilityModule
-                    abilities={this.state.abilities}
+                    moduleData={this.state.abilities}
                     masteryScore={this.state.masteryScore}
-                    updateAbilities={(abilities) => this.updateAbilities(abilities)}
+                    updateModule={(abilities) => this.updateAbilities(abilities)}
                 />
                 //TODO: other modules
                 {/*<div className='skill-module'>*/}

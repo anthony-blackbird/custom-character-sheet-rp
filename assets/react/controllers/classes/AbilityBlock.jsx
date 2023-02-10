@@ -1,56 +1,24 @@
 import React from 'react'
+import GenericBlock from './GenericBlock'
 import TextInput from './Inputs/TextInput'
 import CheckboxInput from './Inputs/CheckboxInput'
 
-class AbilityBlock extends React.Component {
-    constructor(props) {
-        super(props);
-        self = this;
-        for (const [key, data] of Object.entries(this.props.ability.data)) {
-            self.updateValue(key, data);
-        }
-    }
-
-    updateValue(code, value) {
-        let inputs = {};
-
-        inputs['value'] = {
-            name: this.props.ability.code + '-value',
-            type: 'text',
-            code: 'value',
-            cssClass: 'ability-block__value',
-            defaultValue: this.props.ability.data.value
-        };
-        inputs['hasMastery'] = {
-            name: this.props.ability.code + '-hasMastery',
-            type: 'checkBox',
-            code: 'hasMastery',
-            cssClass: 'ability-block__hasMastery',
-            defaultValue: this.props.ability.data.hasMastery
-        };
-
-        let newState = this.props.ability;
-        newState.data[code] = value;
-        newState.inputs = inputs;
-
-        this.props.updateAbility(newState)
-    }
-
+class AbilityBlock extends GenericBlock {
     render() {
         return (
-            <div className={'ability-block --' + this.props.ability.code}>
-                <span className='ability-block__name'>{this.props.ability.name}</span>
+            <div className={this.props.blockData.blockCode + '-block --' + this.props.blockData.code}>
+                <span className={this.props.blockData.blockCode + '-block__name'}>{this.props.blockData.name}</span>
                 <TextInput
-                    input={this.props.ability.inputs['value']}
+                    input={this.props.blockData.inputs['value']}
                     updateValue={(code, value) => this.updateValue(code, value)}
                 />
                 <CheckboxInput
-                    input={this.props.ability.inputs['hasMastery']}
+                    input={this.props.blockData.inputs['hasMastery']}
                     updateValue={(code, value) => this.updateValue(code, value)}
                 />
                 {
-                    Object.values(this.props.ability.additionnal).map((additionnal) => {
-                        return (<span className={'abilty-block__' + additionnal.code + '__value'}>
+                    Object.values(this.props.blockData.additionnal).map((additionnal) => {
+                        return (<span className={this.props.blockData.blockCode + '-block__' + additionnal.code + '__value'}>
                             {additionnal.name} : {additionnal.value}
                         </span>)
                     })
