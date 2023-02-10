@@ -30,7 +30,7 @@ class AbilityBlock extends React.Component {
         };
 
         let newState = this.props.ability;
-        newState[code] = value;
+        newState.data[code] = value;
         newState.inputs = inputs;
 
         this.props.updateAbility(newState)

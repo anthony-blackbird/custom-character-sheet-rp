@@ -21,7 +21,7 @@ class InfoBlock extends React.Component {
         };
 
         let newState = this.props.info;
-        newState[code] = value;
+        newState.data[code] = value;
         newState.inputs = inputs;
 
         this.props.updateInfo(newState)
